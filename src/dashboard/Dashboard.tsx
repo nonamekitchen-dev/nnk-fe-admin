@@ -1,7 +1,7 @@
-import React, { useMemo, CSSProperties } from 'react';
-import { useGetList } from 'react-admin';
-import { useMediaQuery, Theme } from '@mui/material';
-import { subDays, startOfDay } from 'date-fns';
+import React, {CSSProperties, useMemo} from 'react';
+import {useGetList} from 'react-admin';
+import {Theme, useMediaQuery} from '@mui/material';
+import {startOfDay, subDays} from 'date-fns';
 
 import Welcome from './Welcome';
 import MonthlyRevenue from './MonthlyRevenue';
@@ -11,7 +11,7 @@ import PendingReviews from './PendingReviews';
 import NewCustomers from './NewCustomers';
 import OrderChart from './OrderChart';
 
-import { Order } from '../types';
+import {Order} from '../types';
 
 interface OrderStats {
     revenue: number;
@@ -90,30 +90,10 @@ const Dashboard = () => {
     return isXSmall ? (
         <div>
             <div style={styles.flexColumn as CSSProperties}>
-                <Welcome />
-                <MonthlyRevenue value={revenue} />
-                <VerticalSpacer />
-                <NbNewOrders value={nbNewOrders} />
-                <VerticalSpacer />
-                <PendingOrders orders={pendingOrders} />
             </div>
         </div>
     ) : isSmall ? (
         <div style={styles.flexColumn as CSSProperties}>
-            <div style={styles.singleCol}>
-                <Welcome />
-            </div>
-            <div style={styles.flex}>
-                <MonthlyRevenue value={revenue} />
-                <Spacer />
-                <NbNewOrders value={nbNewOrders} />
-            </div>
-            <div style={styles.singleCol}>
-                <OrderChart orders={recentOrders} />
-            </div>
-            <div style={styles.singleCol}>
-                <PendingOrders orders={pendingOrders} />
-            </div>
         </div>
     ) : (
         <>

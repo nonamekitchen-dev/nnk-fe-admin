@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import { ReferenceField, TextField, useRecordContext } from 'react-admin';
+import {Box, Card, CardContent, Grid, Typography} from '@mui/material';
+import {ReferenceField, TextField, useRecordContext} from 'react-admin';
 
 import Basket from '../orders/Basket';
-import { Customer, Invoice } from '../types';
+import {Customer, Invoice} from '../types';
 
 const InvoiceShow = () => {
     const record = useRecordContext<Invoice>();
@@ -14,7 +14,7 @@ const InvoiceShow = () => {
                 <Grid container spacing={2}>
                     <Grid item xs={6}>
                         <Typography variant="h6" gutterBottom>
-                            Posters Galore
+                            No Name Kitchen
                         </Typography>
                     </Grid>
                     <Grid item xs={6}>

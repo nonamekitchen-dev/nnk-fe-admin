@@ -1,4 +1,4 @@
-import { DataProvider } from 'react-admin';
+import {DataProvider} from 'react-admin';
 import fakeServerFactory from '../fakeServer';
 
 export default (type: string) => {
@@ -17,10 +17,9 @@ export default (type: string) => {
             if (name === 'supportAbortSignal') {
                 return import.meta.env.MODE === 'production';
             }
-            return (resource: string, params: any) => {
-                return dataProviderPromise.then(dataProvider => {
-                    return dataProvider[name.toString()](resource, params);
-                });
+            return async (resource: string, params: any) => {
+                const dataProvider = await dataProviderPromise;
+                return dataProvider[name.toString()](resource, params);
             };
         },
     });
@@ -36,9 +35,6 @@ const getDataProvider = async (type: string): Promise<DataProvider> => {
      * To avoid bundling both libraries, the dataProvider and fake server factories
      * use the import() function, so they are asynchronous.
      */
-    if (type === 'graphql') {
-        return import('./graphql').then(factory => factory.default());
-    }
     return import('./rest').then(provider => provider.default);
 };
 
