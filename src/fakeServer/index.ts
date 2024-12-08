@@ -2,7 +2,7 @@
 // this is necessary with react@18 in StrictMode
 let fakeServer: any;
 
-export default (type: string) => {
+export default () => {
     if (!fakeServer) {
         fakeServer = import('./rest').then(factory =>
             factory.default()

@@ -35,7 +35,6 @@ const styles = {
 };
 
 const Spacer = () => <span style={{ width: '1em' }} />;
-const VerticalSpacer = () => <span style={{ height: '1em' }} />;
 
 const Dashboard = () => {
     const isXSmall = useMediaQuery((theme: Theme) =>
